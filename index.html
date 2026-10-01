@@ -86,6 +86,12 @@ ul.pts li b{color:var(--text)}
 .res b{font-size:13.5px}
 .res .slug{font-size:11.5px;color:var(--faint);font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:isolate;text-align:start}
 
+.tl{display:flex;flex-direction:column;gap:8px}
+.tl-item{display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:baseline;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px}
+.tl-item .tl-date{font:600 12px 'IBM Plex Mono',monospace;color:var(--teal-ink);background:var(--teal-tint);border-radius:7px;padding:3px 8px;text-align:center;direction:ltr;unicode-bidi:isolate}
+.tl-item p{margin:0;font-size:13.5px;color:var(--dim)}
+.tl-item p b{color:var(--text)}
+
 .pill{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 10px;width:fit-content}
 .p-warn{background:var(--warn-tint);color:var(--warn)}
 .p-ok{background:var(--ok-tint);color:var(--ok)}
@@ -97,6 +103,7 @@ footer{text-align:center;font-size:12px;color:var(--faint);padding-top:20px;bord
   .kpis{grid-template-columns:repeat(2,1fr)}
   .grid2{grid-template-columns:1fr}
   .res-grid{grid-template-columns:1fr}
+  .tl-item{grid-template-columns:1fr}
 }
 @media (max-width:480px){
   .hero{padding:22px 18px}
@@ -130,7 +137,7 @@ footer{text-align:center;font-size:12px;color:var(--faint);padding-top:20px;bord
     <div class="kpi"><b>٥</b><span data-l="ar">أقسام رئيسية</span><span data-l="en">Core Sections</span></div>
     <div class="kpi"><b>+50</b><span data-l="ar">رابط ومصدر موحّد</span><span data-l="en">Unified Resources</span></div>
     <div class="kpi"><b>2</b><span data-l="ar">فئتان مستفيدتان</span><span data-l="en">Audiences Served</span></div>
-    <div class="kpi"><b>SOP</b><span data-l="ar">مشروع قيد الإطلاق</span><span data-l="en">Project Launching</span></div>
+    <div class="kpi"><b>٦٤</b><span data-l="ar">حالة SOP موثّقة</span><span data-l="en">SOP Cases Documented</span></div>
   </div>
 
   <!-- 1 -->
@@ -144,8 +151,8 @@ footer{text-align:center;font-size:12px;color:var(--faint);padding-top:20px;bord
         <li data-l="en"><b>The Solution:</b> building the CSM Portal from scratch — a single unified reference, with five core sections, now bringing together close to 50 links and resources.</li>
         <li data-l="ar"><b>الهدف المزدوج:</b> توحيد المصادر المعرفية من جهة، ودعم الموظف الحالي والموظف الجديد من جهة أخرى.</li>
         <li data-l="en"><b>The Dual Goal:</b> unifying knowledge resources on one hand, and supporting both current and new employees on the other.</li>
-        <li data-l="ar"><b>مشروع SOP:</b> مرجع إجراءات عمل موحّدة قيد الإطلاق، سيُربط بالبوابة فور اكتماله.</li>
-        <li data-l="en"><b>The SOP Project:</b> a standard-operating-procedures reference currently launching, to be linked from the portal once complete.</li>
+        <li data-l="ar"><b>مشروع SOP:</b> اكتمل توثيق 64 حالة مرجعية ضمن مرجع إجراءات العمل الموحّدة، وسيُربط بالبوابة قريبًا.</li>
+        <li data-l="en"><b>The SOP Project:</b> documentation of 64 reference cases in the standard-operating-procedures reference is now complete, to be linked from the portal soon.</li>
       </ul>
     </div>
   </section>
@@ -187,14 +194,24 @@ footer{text-align:center;font-size:12px;color:var(--faint);padding-top:20px;bord
     <div class="sec-head">
       <span class="n">05</span>
       <h2><span data-l="ar">مشروع SOP</span><span data-l="en">The SOP Project</span></h2>
-      <span class="pill p-warn"><span data-l="ar">قيد الإطلاق</span><span data-l="en">Launching</span></span>
+      <span class="pill p-ok"><span data-l="ar">مكتمل</span><span data-l="en">Completed</span></span>
     </div>
     <div class="card" style="margin-bottom:14px">
-      <p><span data-l="ar">إلى جانب البوابة، يجري العمل على مشروع SOP (إجراءات العمل الموحّدة) — مرجع تفاعلي يوثّق الإجراء الصحيح للتعامل مع كل سيناريو يواجهه موظف نجاح العملاء، بما يضمن اتساق الأداء بين جميع أعضاء الفريق بغض النظر عن خبرتهم.</span><span data-l="en">Alongside the portal, work is underway on the SOP project (Standard Operating Procedures) — an interactive reference documenting the correct procedure for every scenario a CSM may face, ensuring consistent performance across the team regardless of experience level.</span></p>
-      <p><span data-l="ar">المشروع قيد الإطلاق حاليًا، وسيُربط مباشرة ببوابة نجاح العملاء فور اكتماله ليكون جزءًا من المرجع الموحّد ذاته.</span><span data-l="en">The project is currently launching, and will be linked directly from the CSM Portal once complete, becoming part of the same unified reference.</span></p>
+      <p><span data-l="ar">إلى جانب البوابة، اكتمل العمل على مشروع SOP (إجراءات العمل الموحّدة) — مرجع تفاعلي يوثّق الإجراء الصحيح للتعامل مع كل سيناريو يواجهه موظف نجاح العملاء، بما يضمن اتساق الأداء بين جميع أعضاء الفريق بغض النظر عن خبرتهم.</span><span data-l="en">Alongside the portal, work on the SOP project (Standard Operating Procedures) is now complete — an interactive reference documenting the correct procedure for every scenario a CSM may face, ensuring consistent performance across the team regardless of experience level.</span></p>
+      <p><span data-l="ar">اكتمل توثيق 64 حالة مرجعية، مبنية على قائمة الحالات الموحّدة (Cases Master List)، وسيُربط المشروع مباشرة ببوابة نجاح العملاء ليصبح جزءًا من المرجع الموحّد ذاته.</span><span data-l="en">Documentation of 64 reference cases is complete, built on the unified Cases Master List, and the project will be linked directly from the CSM Portal to become part of the same unified reference.</span></p>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <p class="lead" style="margin:0 0 10px"><span data-l="ar">الجدول الزمني للإنجاز:</span><span data-l="en">Completion Timeline:</span></p>
+      <div class="tl">
+        <div class="tl-item"><span class="tl-date"><span data-l="ar">12 يوليو</span><span data-l="en">Jul 12</span></span><p><b><span data-l="ar">بدء إعداد قائمة الحالات</span><span data-l="en">Started drafting the case list</span></b> <span data-l="ar">(64 حالة)</span><span data-l="en">(64 cases)</span></p></div>
+        <div class="tl-item"><span class="tl-date"><span data-l="ar">14 يوليو</span><span data-l="en">Jul 14</span></span><p><b><span data-l="ar">اعتماد القائمة</span><span data-l="en">List approved</span></b> <span data-l="ar">والحصول على صلاحية الداشبورد لبدء الكتابة</span><span data-l="en">and dashboard access granted to begin writing</span></p></div>
+        <div class="tl-item"><span class="tl-date"><span data-l="ar">15 يوليو</span><span data-l="en">Jul 15</span></span><p><b><span data-l="ar">بدء كتابة إجراءات SOP</span><span data-l="en">Started writing the SOP</span></b></p></div>
+        <div class="tl-item"><span class="tl-date"><span data-l="ar">4 أغسطس</span><span data-l="en">Aug 4</span></span><p><b><span data-l="ar">اكتمال الكتابة</span><span data-l="en">Writing completed</span></b> <span data-l="ar">لكل الحالات الـ64</span><span data-l="en">for all 64 cases</span></p></div>
+      </div>
     </div>
     <div class="res-grid">
       <a class="res" href="https://rewaa-cx-portal-frontend-3u9n.onrender.com/sop-builder/" target="_blank" rel="noopener"><b><span data-l="ar">SOP — إجراءات العمل الموحّدة</span><span data-l="en">SOP — Standard Operating Procedures</span></b><span class="slug">rewaa-cx-portal-frontend-3u9n.onrender.com/sop-builder</span></a>
+      <a class="res" href="https://docs.google.com/spreadsheets/d/1Z5NLrLaNXk1zAT4f2VAYYhx1rX0d9nCe3jBfRSeZzPs/edit?usp=drive_link" target="_blank" rel="noopener"><b><span data-l="ar">قائمة الحالات المرجعية</span><span data-l="en">Reference Case List</span></b><span class="slug">CSM_Cases_Master_List · Google Sheets</span></a>
     </div>
   </section>
 
