@@ -1,0 +1,227 @@
+<title>تقرير بوابة نجاح العملاء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f5f8; --surface:#ffffff; --surface-2:#faf9fc; --border:#e2dee8;
+  --text:#211c2b; --dim:#625c70; --faint:#948d9f;
+  --teal:#00A4A6; --teal-ink:#006466; --teal-tint:#e2f4f4;
+  --purple:#653165; --purple-ink:#3e1d3f; --purple-tint:#f1e7f1;
+  --ok:#2f7d4f; --ok-tint:#e3f2e8; --warn:#9a5b08; --warn-tint:#fbefd9; --info:#2d5f8f; --info-tint:#e3edf7;
+  --shadow:0 1px 2px rgba(40,25,50,.05),0 10px 26px -16px rgba(40,25,50,.2);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#17141c; --surface:#211d28; --surface-2:#272330; --border:#393343;
+    --text:#f1eef5; --dim:#b5aec2; --faint:#857e93;
+    --teal:#3fc9cb; --teal-ink:#bdf0f0; --teal-tint:#12302f;
+    --purple:#c79bc8; --purple-ink:#efdfef; --purple-tint:#33233a;
+    --ok:#7fcf9c; --ok-tint:#173023; --warn:#e9b25c; --warn-tint:#3a2b12; --info:#8fbbe6; --info-tint:#16273a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -16px rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#17141c; --surface:#211d28; --surface-2:#272330; --border:#393343;
+  --text:#f1eef5; --dim:#b5aec2; --faint:#857e93;
+  --teal:#3fc9cb; --teal-ink:#bdf0f0; --teal-tint:#12302f;
+  --purple:#c79bc8; --purple-ink:#efdfef; --purple-tint:#33233a;
+  --ok:#7fcf9c; --ok-tint:#173023; --warn:#e9b25c; --warn-tint:#3a2b12; --info:#8fbbe6; --info-tint:#16273a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 26px -16px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Tajawal','IBM Plex Sans',-apple-system,'Segoe UI',Tahoma,sans-serif;line-height:1.7;font-size:15px;font-variant-numeric:tabular-nums}
+html[lang="en"] body{font-family:'IBM Plex Sans',-apple-system,'Segoe UI',sans-serif;font-size:14.5px}
+html[lang="ar"] [data-l="en"], html[lang="en"] [data-l="ar"]{display:none!important}
+h1,h2,h3{font-family:'Cairo','Tajawal',sans-serif;text-wrap:balance;margin:0}
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{font-family:'IBM Plex Sans',sans-serif}
+a{color:var(--teal-ink)}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:24px 64px}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.crumb{font-size:12.5px;color:var(--dim);font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:isolate}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);color:var(--text);border-radius:999px;padding:7px 14px;font:600 13px 'IBM Plex Sans',sans-serif;cursor:pointer}
+.lang-btn:hover{border-color:var(--teal)}
+.lang-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.lang-btn svg{width:17px;height:17px}
+
+.hero{background:linear-gradient(135deg,#653165 0%,#00A4A6 100%);color:#fff;border-radius:20px;padding:30px 30px 26px;box-shadow:var(--shadow);margin-bottom:22px}
+.hero .eyebrow{display:inline-block;font:600 11.5px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:4px 10px;border-radius:999px;margin-bottom:12px;direction:ltr;unicode-bidi:isolate}
+.hero h1{font-size:27px;font-weight:800;margin-bottom:8px}
+.hero p{margin:0;max-width:72ch;color:rgba(255,255,255,.9)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:13px;color:rgba(255,255,255,.88)}
+.hero .meta b{color:#fff}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px}
+.kpi b{display:block;font:800 24px 'Cairo','Tajawal',sans-serif;color:var(--purple);line-height:1.2}
+html[lang="en"] .kpi b{font-family:'IBM Plex Sans',sans-serif}
+.kpi span{font-size:12.5px;color:var(--dim)}
+
+section{margin-bottom:30px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;border-bottom:1.5px solid var(--border);padding-bottom:8px}
+.sec-head .n{font:600 12px 'IBM Plex Mono',monospace;color:var(--teal-ink);background:var(--teal-tint);border-radius:7px;padding:2px 8px;direction:ltr}
+.sec-head h2{font-size:20px;color:var(--text)}
+.lead{color:var(--dim);margin:0 0 14px;max-width:82ch}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+.card p{margin:0 0 10px}
+.card p:last-child{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ul.pts{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+ul.pts li b{color:var(--text)}
+
+.obs{display:flex;flex-direction:column;gap:10px}
+.obs-item{display:grid;grid-template-columns:28px 1fr;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.obs-item .ix{font:700 13px 'IBM Plex Mono',monospace;color:var(--teal-ink);background:var(--teal-tint);border-radius:8px;height:28px;display:flex;align-items:center;justify-content:center}
+.obs-item h3{font-size:14.5px;margin-bottom:3px}
+.obs-item p{margin:0;font-size:13.5px;color:var(--dim)}
+
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.res{display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:10px 12px;text-decoration:none;color:var(--text);transition:border-color .15s}
+.res:hover{border-color:var(--teal)}
+.res b{font-size:13.5px}
+.res .slug{font-size:11.5px;color:var(--faint);font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:isolate;text-align:start}
+
+.pill{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 10px;width:fit-content}
+.p-warn{background:var(--warn-tint);color:var(--warn)}
+.p-ok{background:var(--ok-tint);color:var(--ok)}
+.sec-head .pill{margin-inline-start:auto}
+
+footer{text-align:center;font-size:12px;color:var(--faint);padding-top:20px;border-top:1px solid var(--border);margin-top:10px}
+
+@media (max-width:860px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .hero{padding:22px 18px}
+  .hero h1{font-size:21px}
+}
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <span class="crumb">CSM / Portal Project</span>
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+      <span data-l="ar">English</span><span data-l="en">العربية</span>
+    </button>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow">CSM · Rewaa · Portal Project</span>
+    <h1><span data-l="ar">بوابة نجاح العملاء — توحيد المصادر وتمكين الفريق</span><span data-l="en">CSM Portal — Unifying Resources, Empowering the Team</span></h1>
+    <p>
+      <span data-l="ar">تقرير يوثّق مشروع بوابة نجاح العملاء: بناؤها من الصفر كمرجع موحّد لكل ما يحتاجه الموظف الحالي والجديد، إلى جانب لمحة عن مشروع SOP المرتبط بها.</span>
+      <span data-l="en">A report documenting the CSM Portal project: built from scratch as a unified reference for current and new employees alike, alongside an overview of the related SOP project.</span>
+    </p>
+    <div class="meta">
+      <span><span data-l="ar">الإعداد:</span><span data-l="en">Prepared by:</span> <b><span data-l="ar">فداء يوسف — قسم الجودة — فريق نجاح العملاء</span><span data-l="en">Fidaa Yousef — Quality Department — Customer Success Team</span></b></span>
+      <span><span data-l="ar">الحالة:</span><span data-l="en">Status:</span> <b><span data-l="ar">قيد التطوير المستمر</span><span data-l="en">Actively Maintained</span></b></span>
+    </div>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><b>٥</b><span data-l="ar">أقسام رئيسية</span><span data-l="en">Core Sections</span></div>
+    <div class="kpi"><b>+50</b><span data-l="ar">رابط ومصدر موحّد</span><span data-l="en">Unified Resources</span></div>
+    <div class="kpi"><b>2</b><span data-l="ar">فئتان مستفيدتان</span><span data-l="en">Audiences Served</span></div>
+    <div class="kpi"><b>SOP</b><span data-l="ar">مشروع قيد الإطلاق</span><span data-l="en">Project Launching</span></div>
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <div class="sec-head"><span class="n">01</span><h2><span data-l="ar">الملخص التنفيذي</span><span data-l="en">Executive Summary</span></h2></div>
+    <div class="card">
+      <ul class="pts">
+        <li data-l="ar"><b>المشكلة:</b> المعرفة التشغيلية لفريق نجاح العملاء كانت موزّعة بين عشرات الروابط والمستندات المنفصلة، ما صعّب الوصول السريع للمعلومة الصحيحة.</li>
+        <li data-l="en"><b>The Problem:</b> the CSM team's operational knowledge was scattered across dozens of separate links and documents, making it hard to quickly find the right information.</li>
+        <li data-l="ar"><b>الحل:</b> بناء بوابة نجاح العملاء من الصفر — مرجع موحّد واحد، بخمسة أقسام رئيسية، يضم اليوم نحو 50 رابطًا ومصدرًا.</li>
+        <li data-l="en"><b>The Solution:</b> building the CSM Portal from scratch — a single unified reference, with five core sections, now bringing together close to 50 links and resources.</li>
+        <li data-l="ar"><b>الهدف المزدوج:</b> توحيد المصادر المعرفية من جهة، ودعم الموظف الحالي والموظف الجديد من جهة أخرى.</li>
+        <li data-l="en"><b>The Dual Goal:</b> unifying knowledge resources on one hand, and supporting both current and new employees on the other.</li>
+        <li data-l="ar"><b>مشروع SOP:</b> مرجع إجراءات عمل موحّدة قيد الإطلاق، سيُربط بالبوابة فور اكتماله.</li>
+        <li data-l="en"><b>The SOP Project:</b> a standard-operating-procedures reference currently launching, to be linked from the portal once complete.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <div class="sec-head"><span class="n">02</span><h2><span data-l="ar">خلفية المشروع</span><span data-l="en">Background</span></h2></div>
+    <div class="card">
+      <p><span data-l="ar">قبل بوابة نجاح العملاء، كانت المعرفة التشغيلية لفريق نجاح العملاء في رِواء موزّعة بين عشرات الروابط والمستندات المنفصلة — أدلة بصيغ مختلفة، قنوات Slack متفرقة، جداول بيانات، وملفات Drive — ما كان يصعّب على الموظف الوصول السريع للمعلومة الصحيحة في الوقت المناسب، خصوصًا على الموظف الجديد خلال فترة التأهيل.</span><span data-l="en">Before the CSM Portal, the operational knowledge of Rewaa's Customer Success team was scattered across dozens of separate links and documents — guides in different formats, scattered Slack channels, spreadsheets, and Drive files — making it hard for employees to quickly find the right information at the right time, especially for new hires during onboarding.</span></p>
+      <p><span data-l="ar">بوابة نجاح العملاء مشروع بُني من الصفر ليكون المرجع الموحّد الوحيد لكل ما يحتاجه موظف نجاح العملاء في عمله اليومي، بواجهة عربية واحدة سهلة التصفح.</span><span data-l="en">The CSM Portal is a project built entirely from scratch to serve as the single unified reference for everything a CSM needs in their daily work, through one easy-to-navigate Arabic interface.</span></p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <div class="sec-head"><span class="n">03</span><h2><span data-l="ar">الهدف من المشروع</span><span data-l="en">Project Goal</span></h2></div>
+    <div class="obs">
+      <div class="obs-item"><span class="ix">1</span><div><h3><span data-l="ar">توحيد المصادر المعرفية</span><span data-l="en">Unifying Knowledge Resources</span></h3><p><span data-l="ar">تجميع كل الأدلة والأدوات والسياسات المتعلقة بعمل موظف نجاح العملاء في مكان واحد، بدل تشتتها بين عشرات الروابط.</span><span data-l="en">Bringing every guide, tool, and policy a CSM needs into one place, instead of scattered across dozens of links.</span></p></div></div>
+      <div class="obs-item"><span class="ix">2</span><div><h3><span data-l="ar">دعم الموظفين الحاليين والجدد</span><span data-l="en">Supporting Current &amp; New Employees</span></h3><p><span data-l="ar">تمكين الموظف الحالي من الرجوع السريع لأي معلومة أثناء عمله اليومي، وتوفير نقطة انطلاق واضحة للموظف الجديد للتعرف على الشركة ودوره ومسؤولياته دون الحاجة لسؤال الزملاء عن كل تفصيل.</span><span data-l="en">Giving current staff instant access to any information during their daily work, and giving new hires a clear starting point to learn about the company, their role, and responsibilities without asking colleagues for every detail.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <div class="sec-head"><span class="n">04</span><h2><span data-l="ar">البناء من الصفر — خمسة أقسام</span><span data-l="en">Built From Scratch — Five Sections</span></h2></div>
+    <p class="lead"><span data-l="ar">صُمّمت البوابة وبُنيت بالكامل من الصفر، بخمسة أقسام رئيسية مترابطة:</span><span data-l="en">The portal was designed and built entirely from scratch, around five interconnected core sections:</span></p>
+    <div class="obs">
+      <div class="obs-item"><span class="ix">١</span><div><h3><span data-l="ar">الدور والالتزامات</span><span data-l="en">Role &amp; Commitments</span></h3><p><span data-l="ar">تعريف دور الموظف ومعايير الالتزام الأساسية في كل تواصل مع العميل.</span><span data-l="en">Defines the employee's role and the core compliance standards for every customer interaction.</span></p></div></div>
+      <div class="obs-item"><span class="ix">٢</span><div><h3><span data-l="ar">رحلة العميل</span><span data-l="en">Customer Journey</span></h3><p><span data-l="ar">عرض بصري لمراحل رحلة العميل (التفعيل ← تبنّي المنتج) وموقع كل نوع تواصل ضمنها.</span><span data-l="en">A visual overview of the customer journey stages (Activation → Adoption) and where each interaction type fits.</span></p></div></div>
+      <div class="obs-item"><span class="ix">٣</span><div><h3><span data-l="ar">المصادر المعرفية</span><span data-l="en">Knowledge Resources</span></h3><p><span data-l="ar">الأدلة التشغيلية لكل مرحلة، من التفعيل وحتى إعادة التفعيل، إضافة إلى برامج الدعم والحوافز.</span><span data-l="en">Operational guides for every stage, from activation through reactivation, plus support and incentive programs.</span></p></div></div>
+      <div class="obs-item"><span class="ix">٤</span><div><h3><span data-l="ar">البرامج والأدوات</span><span data-l="en">Programs &amp; Tools</span></h3><p><span data-l="ar">الأنظمة التي يستخدمها الموظف يوميًا — CRM، Metabase، Maqsam، Open CX، وغيرها.</span><span data-l="en">The systems used daily — CRM, Metabase, Maqsam, Open CX, and more.</span></p></div></div>
+      <div class="obs-item"><span class="ix">٥</span><div><h3><span data-l="ar">تعليمات الالتزام والجودة</span><span data-l="en">Compliance &amp; Quality</span></h3><p><span data-l="ar">السياسات والمعايير التي تضمن جودة التعامل مع العميل.</span><span data-l="en">The policies and standards that ensure quality in every customer interaction.</span></p></div></div>
+    </div>
+    <p class="lead" style="margin-top:14px"><span data-l="ar">تضم البوابة اليوم نحو 50 رابطًا ومصدرًا موزّعة على هذه الأقسام، وتُحدَّث باستمرار مع كل تطور في عمل الفريق.</span><span data-l="en">The portal today brings together close to 50 links and resources across these sections, and is continuously updated as the team's work evolves.</span></p>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <div class="sec-head">
+      <span class="n">05</span>
+      <h2><span data-l="ar">مشروع SOP</span><span data-l="en">The SOP Project</span></h2>
+      <span class="pill p-warn"><span data-l="ar">قيد الإطلاق</span><span data-l="en">Launching</span></span>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <p><span data-l="ar">إلى جانب البوابة، يجري العمل على مشروع SOP (إجراءات العمل الموحّدة) — مرجع تفاعلي يوثّق الإجراء الصحيح للتعامل مع كل سيناريو يواجهه موظف نجاح العملاء، بما يضمن اتساق الأداء بين جميع أعضاء الفريق بغض النظر عن خبرتهم.</span><span data-l="en">Alongside the portal, work is underway on the SOP project (Standard Operating Procedures) — an interactive reference documenting the correct procedure for every scenario a CSM may face, ensuring consistent performance across the team regardless of experience level.</span></p>
+      <p><span data-l="ar">المشروع قيد الإطلاق حاليًا، وسيُربط مباشرة ببوابة نجاح العملاء فور اكتماله ليكون جزءًا من المرجع الموحّد ذاته.</span><span data-l="en">The project is currently launching, and will be linked directly from the CSM Portal once complete, becoming part of the same unified reference.</span></p>
+    </div>
+    <div class="res-grid">
+      <a class="res" href="https://rewaa-cx-portal-frontend-3u9n.onrender.com/sop-builder/" target="_blank" rel="noopener"><b><span data-l="ar">SOP — إجراءات العمل الموحّدة</span><span data-l="en">SOP — Standard Operating Procedures</span></b><span class="slug">rewaa-cx-portal-frontend-3u9n.onrender.com/sop-builder</span></a>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <div class="sec-head"><span class="n">06</span><h2><span data-l="ar">الأثر والفائدة</span><span data-l="en">Impact</span></h2></div>
+    <div class="obs">
+      <div class="obs-item"><span class="ix">1</span><div><h3><span data-l="ar">للموظف الحالي</span><span data-l="en">For Current Employees</span></h3><p><span data-l="ar">إيجاد أي معلومة خلال ثوانٍ بدل البحث بين محادثات Slack أو سؤال الزملاء.</span><span data-l="en">Finding any information within seconds, instead of searching through Slack conversations or asking colleagues.</span></p></div></div>
+      <div class="obs-item"><span class="ix">2</span><div><h3><span data-l="ar">للموظف الجديد</span><span data-l="en">For New Hires</span></h3><p><span data-l="ar">مرجع تأهيلي شامل منذ اليوم الأول، يغني عن سؤال الزملاء عن كل تفصيل.</span><span data-l="en">A comprehensive onboarding reference from day one, replacing the need to ask colleagues for every detail.</span></p></div></div>
+    </div>
+    <p class="lead" style="margin-top:14px"><span data-l="ar">كما تتيح البنية الموحّدة للبوابة إضافة أي مصدر أو أداة جديدة بسهولة، لتبقى مواكبة لتطور عمل فريق نجاح العملاء باستمرار.</span><span data-l="en">The portal's unified structure also makes it easy to add any new resource or tool, keeping it continuously aligned with the evolving work of the Customer Success team.</span></p>
+  </section>
+
+  <footer>
+    <span data-l="ar">إعداد: فداء يوسف — قسم الجودة — فريق نجاح العملاء | رِواء</span><span data-l="en">Prepared by: Fidaa Yousef — Quality Department — Customer Success Team | Rewaa</span>
+  </footer>
+</div>
+
+<script>
+const root=document.documentElement;
+function setLang(l){
+  root.lang=l; root.dir=l==='ar'?'rtl':'ltr';
+  document.title=l==='ar'?'تقرير بوابة نجاح العملاء':'CSM Portal Project Report';
+  try{localStorage.setItem('csmPortalReportLang',l);}catch(e){}
+}
+let saved='ar';
+try{saved=localStorage.getItem('csmPortalReportLang')||'ar';}catch(e){}
+setLang(saved);
+document.getElementById('langBtn').addEventListener('click',()=>setLang(root.lang==='ar'?'en':'ar'));
+</script>
